@@ -1,10 +1,10 @@
-"use client"
- 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
- 
-import { Button } from "@/components/ui/button"
+"use client";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -13,10 +13,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { useState } from "react"
- 
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import AuthRepo from "@/repo/authRepo";
+
 const formSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
@@ -24,24 +25,26 @@ const formSchema = z.object({
   password: z.string().min(2, {
     message: "password must be at least 2 characters.",
   }),
-})
+});
 
 export default () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
-      password: ""
+      password: "",
     },
   });
 
-  const [errMssg, setErrMssg] = useState("")
+  const [errMssg, setErrMssg] = useState("");
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    setErrMssg("Invalid Credentials")
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      let mssg = await AuthRepo.Login(values.username, values.password);
+      setErrMssg(mssg);
+    } catch (error) {
+      setErrMssg("Error: " + error);
+    }
   }
 
   return (
