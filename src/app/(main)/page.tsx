@@ -31,21 +31,21 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export default function Home() {
-  return (
-    <ChartContainer config={chartConfig} className="h-full w-full">
-      <BarChart accessibilityLayer data={chartData}>
-        <CartesianGrid vertical={false} />
-        <XAxis
-          dataKey="month"
-          tickLine={false}
-          tickMargin={10}
-          axisLine={false}
-          tickFormatter={(value) => value.slice(0, 3)}
-        />
-        <ChartLegend content={<ChartLegendContent />} />
-        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-        <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
-      </BarChart>
-    </ChartContainer>
+  return (<>Dashboard</>
+    // <ChartContainer config={chartConfig} className="h-full w-full">
+    //   <BarChart accessibilityLayer data={chartData}>
+    //     <CartesianGrid vertical={false} />
+    //     <XAxis
+    //       dataKey="month"
+    //       tickLine={false}
+    //       tickMargin={10}
+    //       axisLine={false}
+    //       tickFormatter={(value) => value.slice(0, 3)}
+    //     />
+    //     <ChartLegend content={<ChartLegendContent />} />
+    //     <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+    //     <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+    //   </BarChart>
+    // </ChartContainer>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
+import { DashboardLayout } from "@/components/custom/dashboard-layout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,38 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <section className="h-screen bg-[whitesmoke] flex flex-col">
-          <header className="bg-green-700 py-2">
-            <div className="flex justify-between items-center max-w-[1000px] mx-auto px-1">
-              <h1 className="text-3xl">LMS</h1>
-              <p className="text-xl">(Last Name, First Name)</p>
-            </div>
-          </header>
-          <main className="flex-1">
-            <div className="flex flex-row max-w-[1000px] mx-auto h-full">
-              <section className="bg-blue-300 px-2">
-                <h3 className="text-xl text-center">Menu</h3>
-                <ul className="flex flex-col gap-2">
-                  <li>
-                    <nav className="cursor-pointer hover:opacity-75 border rounded bg-blue-500 px-2">Dashboard</nav>
-                  </li>
-                  <li>
-                    <nav className="cursor-pointer hover:opacity-75 border rounded bg-blue-500 px-2">My Courses</nav>
-                  </li>
-                  <hr />
-                  <li>
-                    <nav className="cursor-pointer hover:opacity-75 border rounded bg-blue-500 px-2">Manage Courses</nav>
-                  </li>
-                  <hr />
-                  <li>
-                    <nav className="cursor-pointer hover:opacity-75 border rounded bg-blue-500 px-2">Manage Users</nav>
-                  </li>
-                </ul>
-              </section>
-              <section className="flex-1 bg-red-300">{children}</section>
-            </div>
-          </main>
-        </section>
+        <DashboardLayout children={children}></DashboardLayout>
       </body>
     </html>
   );
