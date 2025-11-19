@@ -1,38 +1,43 @@
 import { CourseCard } from "@/components/custom/custom-card";
+import Link from "next/link";
 
 export default function Home() {
   const courses = [
     {
       name: "Data Structures and Algorithms",
       description: "Lorem ipsum dolor sit amet",
-      progress: 100
+      progress: 100,
     },
     {
       name: "Agile Methodology and Practices",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi aperiam reprehenderit id. Obcaecati ducimus sunt repellendus tenetur autem in itaque. Pariatur ullam maxime possimus ex neque sit ea blanditiis iure?",
-        progress: 40
+      progress: 40,
     },
     {
       name: "ASP.NET Web Api",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi aperiam reprehenderit id. Obcaecati ducimus sunt repellendus tenetur autem in itaque. Pariatur ullam maxime possimus ex neque sit ea blanditiis iure?",
-        progress: 20
+      progress: 20,
     },
     {
       name: "Fundamentals of Angular",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi aperiam reprehenderit id. Obcaecati ducimus sunt repellendus tenetur autem in itaque. Pariatur ullam maxime possimus ex neque sit ea blanditiis iure?",
-        progress: 15
+      progress: 15,
     },
   ];
 
   return (
     <>
       <header className="bg-green-800 text-white px-3 py-5 flex justify-between items-center">
-        <h1 className="text-4xl">SSCGI LMS</h1>
+        <h1 className="text-xl cursor-pointer hover:underline">
+          <Link href="/">SSCGI LMS</Link>
+        </h1>
         <div className="text-right">
-          <p>Reyes, Christian</p>
+          <p className="cursor-pointer hover:underline">
+            <Link href="/profile">Reyes, Christian</Link>
+          </p>
           <p className="text-sm">Student</p>
         </div>
       </header>
