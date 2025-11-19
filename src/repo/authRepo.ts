@@ -1,4 +1,4 @@
-export default class AuthRepo {
+export class AuthRepo {
   public static async Login(username: string, password: string) {
     const res = await fetch("http://localhost:5074/api/auth/login", {
       method: "POST",
@@ -9,10 +9,14 @@ export default class AuthRepo {
         userName: username,
         password: password,
       }),
+      credentials: "include"
     });
 
-    const data = await res.json();
+    const data: {
+      message: string,
+      user: { firstName: string; lastName: string; userName: string }
+    } = await res.json();
 
-    return data.message;
+    return {...data, status: res.status};
   }
 }
