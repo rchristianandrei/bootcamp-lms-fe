@@ -30,18 +30,7 @@ export default function Home() {
 
   return (
     <>
-      <header className="bg-green-800 text-white px-3 py-5 flex justify-between items-center">
-        <h1 className="text-xl cursor-pointer hover:underline">
-          <Link href="/">SSCGI LMS</Link>
-        </h1>
-        <div className="text-right">
-          <p className="cursor-pointer hover:underline">
-            <Link href="/profile">Reyes, Christian</Link>
-          </p>
-          <p className="text-sm">Student</p>
-        </div>
-      </header>
-      <main className="py-5 px-3 flex flex-col gap-5">
+      <section className="flex flex-col gap-5">
         <section className="max-w-[1250px] mx-auto flex flex-col gap-2">
           <h2 className="text-3xl">Your Courses</h2>
           <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
@@ -59,10 +48,7 @@ export default function Home() {
             ))}
           </section>
         </section>
-      </main>
-      <footer className="bg-gray-700 text-white px-3 py-5">
-        All Rights Reserved
-      </footer>
+      </section>
     </>
   );
 }
