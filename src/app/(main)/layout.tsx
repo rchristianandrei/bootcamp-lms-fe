@@ -28,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="bg-green-800 text-white px-3 py-5 flex justify-between items-center">
+        <header className="sticky top-0 bg-green-800 text-white px-3 py-5 flex justify-between items-center">
           <h1 className="text-xl cursor-pointer hover:underline">
             <Link href="/">SSCGI LMS</Link>
           </h1>
@@ -39,7 +39,7 @@ export default function RootLayout({
             <p className="text-sm">Student</p>
           </div>
         </header>
-        <main className="py-5 px-3">{children}</main>
+        <main className="py-5 px-3 min-h-[100vh]">{children}</main>
         <footer className="bg-gray-700 text-white px-3 py-5">
           All Rights Reserved
         </footer>

@@ -1,5 +1,9 @@
 import { CourseCard } from "@/components/custom/custom-card";
-import Link from "next/link";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 export default function Home() {
   const courses = [
@@ -31,23 +35,33 @@ export default function Home() {
   return (
     <>
       <section className="flex flex-col gap-5">
-        <section className="max-w-[1250px] mx-auto flex flex-col gap-2">
-          <h2 className="text-3xl">Your Courses</h2>
-          <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-            {courses.map((course, key) => (
-              <CourseCard key={key} courseDetails={course}></CourseCard>
-            ))}
-          </section>
-        </section>
 
-        <section className="max-w-[1250px] mx-auto flex flex-col gap-2">
-          <h2 className="text-3xl">Completed Courses</h2>
-          <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-            {courses.map((course, key) => (
-              <CourseCard key={key} courseDetails={course}></CourseCard>
-            ))}
+        <Collapsible defaultOpen>
+          <section className="max-w-[1250px] mx-auto flex flex-col gap-2">
+            <CollapsibleTrigger className="text-left border-b-1"><h2 className="text-3xl">Your Courses</h2></CollapsibleTrigger>
+            <CollapsibleContent>
+              <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+                {courses.map((course, key) => (
+                  <CourseCard key={key} courseDetails={course}></CourseCard>
+                ))}
+              </section>
+            </CollapsibleContent>
           </section>
-        </section>
+        </Collapsible>
+
+        <Collapsible defaultOpen>
+          <section className="max-w-[1250px] mx-auto flex flex-col gap-2">
+            <CollapsibleTrigger className="text-left border-b-1"><h2 className="text-3xl">Completed Courses</h2></CollapsibleTrigger>
+            <CollapsibleContent>
+              <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+                {courses.map((course, key) => (
+                  <CourseCard key={key} courseDetails={course}></CourseCard>
+                ))}
+              </section>
+            </CollapsibleContent>
+          </section>
+        </Collapsible>
+
       </section>
     </>
   );
