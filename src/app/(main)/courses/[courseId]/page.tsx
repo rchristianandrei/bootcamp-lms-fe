@@ -1,4 +1,4 @@
-import { CircleProgress } from "@/components/custom/circle-progress";
+import { CircleProgress } from "@/app/(main)/courses/[courseId]/circle-progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Activities } from "./activities";
 

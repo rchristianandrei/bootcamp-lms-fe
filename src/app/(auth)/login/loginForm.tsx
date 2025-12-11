@@ -1,8 +1,9 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import {
   Form,
@@ -14,9 +15,9 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Spinner } from "@/components/ui/spinner";
 
 import { AuthRepo } from "@/repo/authRepo";
-import { useState } from "react";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -38,10 +39,14 @@ export function LoginForm() {
     },
   });
 
+  const [isLoading, setIsLoading] = useState(false);
   const [errMssg, setErrMssg] = useState("");
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
+      if(isLoading) return;
+
+      setIsLoading(true);
       const result = await AuthRepo.Login(values.username, values.password);
 
       switch (result.status) {
@@ -54,6 +59,7 @@ export function LoginForm() {
       }
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
     }
   }
 
@@ -94,7 +100,13 @@ export function LoginForm() {
                 )}
               />
               {errMssg && <p className="text-center text-red-400">{errMssg}</p>}
-              <Button type="submit">Submit</Button>
+              {!isLoading ? (
+                <Button type="submit">Submit</Button>
+              ) : (
+                <Button type="button" disabled>
+                  <Spinner></Spinner>
+                </Button>
+              )}
             </form>
           </Form>
         </section>

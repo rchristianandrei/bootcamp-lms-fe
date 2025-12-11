@@ -7,7 +7,7 @@ function randomLightColor() {
   return `hsl(${h}, ${s}%, ${l}%)`;
 }
 
-export function CourseCard(props: {
+export function HomeCourseCard(props: {
   courseDetails: { name: string; description: string; progress: number };
 }) {
   return (
@@ -16,7 +16,7 @@ export function CourseCard(props: {
         className="border rounded flex flex-col"
         style={{ backgroundColor: `${randomLightColor()}` }}
       >
-        <section className="border-b-1 px-1 hover:underline cursor-pointer">
+        <section className="border-b-1 px-1 hover:underline cursor-pointer active:no-underline">
           <Link
             className="w-full"
             href={`/courses/${props.courseDetails.name}`}

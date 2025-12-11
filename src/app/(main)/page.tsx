@@ -1,4 +1,4 @@
-import { CourseCard } from "@/components/custom/custom-card";
+import { HomeCourseCard } from "@/app/(main)/_components/home-course-card";
 import {
   Collapsible,
   CollapsibleContent,
@@ -42,7 +42,7 @@ export default function Home() {
             <CollapsibleContent>
               <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                 {courses.map((course, key) => (
-                  <CourseCard key={key} courseDetails={course}></CourseCard>
+                  <HomeCourseCard key={key} courseDetails={course}></HomeCourseCard>
                 ))}
               </section>
             </CollapsibleContent>
@@ -55,7 +55,7 @@ export default function Home() {
             <CollapsibleContent>
               <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                 {courses.map((course, key) => (
-                  <CourseCard key={key} courseDetails={course}></CourseCard>
+                  <HomeCourseCard key={key} courseDetails={course}></HomeCourseCard>
                 ))}
               </section>
             </CollapsibleContent>
