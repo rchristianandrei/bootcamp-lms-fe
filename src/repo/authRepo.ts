@@ -6,7 +6,7 @@ export class AuthRepo {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userName: username,
+        email: username,
         password: password,
       }),
       credentials: "include"
