@@ -20,7 +20,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { AuthRepo } from "@/repo/authRepo";
 
 const formSchema = z.object({
-  username: z.string().min(2, {
+  email: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
   password: z.string().min(2, {
@@ -34,7 +34,7 @@ export function LoginForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      email: "",
       password: "",
     },
   });
@@ -47,7 +47,7 @@ export function LoginForm() {
       if(isLoading) return;
 
       setIsLoading(true);
-      const result = await AuthRepo.Login(values.username, values.password);
+      const result = await AuthRepo.Login(values.email, values.password);
 
       switch (result.status) {
         case 200:
@@ -75,10 +75,10 @@ export function LoginForm() {
             >
               <FormField
                 control={form.control}
-                name="username"
+                name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Username</FormLabel>
+                    <FormLabel>Email</FormLabel>
                     <FormControl>
                       <Input placeholder="" {...field} />
                     </FormControl>
